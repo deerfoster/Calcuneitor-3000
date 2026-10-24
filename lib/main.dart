@@ -1,3 +1,4 @@
+import 'package:calcuneitor_3000/screens/homescreen.dart';
 import 'package:flutter/material.dart';
 
 void main(){
@@ -11,11 +12,11 @@ class Calcuneitor extends StatelessWidget{
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        body: Center(
-          child: Text('Calcuneitor 3000')
-        )
-      )
+      theme: ThemeData(
+        useMaterial3: true,
+        colorSchemeSeed: Colors.pink[200],
+      ),
+      home: HomeScreen()
     );
   }
 }
