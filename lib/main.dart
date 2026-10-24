@@ -5,12 +5,17 @@ void main(){
 }
 
 class Calcuneitor extends StatelessWidget{
+  const Calcuneitor({super.key});
+
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
-    throw UnimplementedError();
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        body: Center(
+          child: Text('Calcuneitor 3000')
+        )
+      )
+    );
   }
-
-
-
 }
