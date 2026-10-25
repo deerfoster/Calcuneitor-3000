@@ -44,6 +44,7 @@ class _HomeScreenState extends State<HomeScreen> {
         break;
         
       case '=':
+      _calcuLogic.mathResults();
         break;
         
       default:
