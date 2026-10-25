@@ -19,7 +19,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text('$counter', style: TextStyle(fontSize: 100, fontFamily: 'Verdana', fontWeight: FontWeight(100)),),
             Text('Calculadora', style: TextStyle(fontSize: 20, fontFamily: 'Verdana'))
