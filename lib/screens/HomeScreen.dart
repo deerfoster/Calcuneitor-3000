@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:calcuneitor_3000/calcuneitor_logic/logic.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -10,7 +11,48 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
 
   int counter = 0;
+  final CalcuneitorLogic _calcuLogic = CalcuneitorLogic();
 
+//-----------------------------------------------------------------------------//
+
+  void _onBttonPressed(String value){
+    setState(() {
+      switch (value) {
+      case '0': 
+      case '1':
+      case '2':
+      case '3':
+      case '4':
+      case '5':
+      case '6':
+      case '7':
+      case '8':
+      case '9':
+      case '.':
+      _calcuLogic.onScreen(value);
+        break;
+        
+      case '+':
+      case '-':
+      case '×':
+      case '÷':
+      _calcuLogic.operationBttonOnScreen(value);
+        break;
+        
+      case 'C':
+      _calcuLogic.cleanerCalcu();
+        break;
+        
+      case '=':
+        break;
+        
+      default:
+        break;
+    }
+    });
+  }
+
+//---------------------------------------------------------------------------------------//
   Widget _buildButton(String bttonText) {
     return Expanded(
       child: 
@@ -22,13 +64,14 @@ class _HomeScreenState extends State<HomeScreen> {
             minimumSize: Size(95, 65)
           ),
             onPressed: (){
-
+              _onBttonPressed(bttonText);
           },
           child: Text(bttonText, style: TextStyle(color: Colors.brown[600]),),
         ),
       )
     );
   }
+//------------------------------------------------------------------------------------------------------//
 
   @override
   Widget build(BuildContext context) {
@@ -50,8 +93,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 color: Colors.pink[50],
                 alignment: Alignment.bottomRight,
                 padding: const EdgeInsets.all(24.0),
-                child: const Text(
-                  '0',
+                child: Text(_calcuLogic.textOnScreen ?? '0',
                   style: TextStyle(fontSize: 48.0, color: Colors.brown, fontWeight: FontWeight.bold,
                   ),
                 ),
