@@ -6,11 +6,11 @@ Calcuneitor 3000 is an App made simply for the people who wants to do basic math
 
 ## Technologies
 
-### Lenguajes y Frameworks
+### Languages & Frameworks
 * **Flutter:** v3.47.7 (Framework)
 * **Dart:** v3.13.4 (programming language)
 
-### Entorno de Desarrollo
+### Enviroments
 * **IDE:** Visual Studio Code v1.143 (w/ official flutter & dart extensions)
 
 ## Installation

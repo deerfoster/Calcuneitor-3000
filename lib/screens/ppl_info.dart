@@ -9,6 +9,15 @@ class DeveloperInfo extends StatelessWidget {
       appBar: AppBar(
         title: Text('App Developer'),
       ),
+      body: Center(
+        child: Column(
+          children: [
+            Container(
+              color: Colors.pink[100],
+            )
+          ],
+        ),
+      ),
     );
   }
 
