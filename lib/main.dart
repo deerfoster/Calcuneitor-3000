@@ -1,4 +1,4 @@
-import 'package:calcuneitor_3000/screens/homescreen.dart';
+import 'package:calcuneitor_3000/routes/routes_app.dart';
 import 'package:flutter/material.dart';
 
 void main(){
@@ -16,7 +16,8 @@ class Calcuneitor extends StatelessWidget{
         useMaterial3: true,
         colorSchemeSeed: Colors.pink[200],
       ),
-      home: HomeScreen()
+      initialRoute: '/home', 
+      routes: calcuneitorRoutes,
     );
   }
 }
