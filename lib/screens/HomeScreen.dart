@@ -1,3 +1,5 @@
+import 'package:calcuneitor_3000/routes/routes_app.dart';
+import 'package:calcuneitor_3000/screens/ppl_info.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -15,7 +17,9 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(onPressed: () {  }, icon: Icon(Icons.menu)),
+        leading: IconButton(onPressed: () {  
+          Navigator.pushNamed(context, '/info');
+        }, icon: Icon(Icons.info_outline)),
       ),
       body: Center(
         child: Column(
