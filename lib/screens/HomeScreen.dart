@@ -1,5 +1,3 @@
-import 'package:calcuneitor_3000/routes/routes_app.dart';
-import 'package:calcuneitor_3000/screens/ppl_info.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -13,55 +11,102 @@ class _HomeScreenState extends State<HomeScreen> {
 
   int counter = 0;
 
+  Widget _buildButton(String bttonText) {
+    return Expanded(
+      child: 
+      Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: 
+          ElevatedButton(style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.pink[50],
+            minimumSize: Size(95, 65)
+          ),
+            onPressed: (){
+
+          },
+          child: Text(bttonText, style: TextStyle(color: Colors.brown[600]),),
+        ),
+      )
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        title:Text(
+        'Calcuneitor 3000', style: TextStyle(color: Colors.brown[600]),
+        ),
         leading: IconButton(onPressed: () {  
           Navigator.pushNamed(context, '/info');
-        }, icon: Icon(Icons.info_outline)),
+        }, icon: Icon(Icons.info_outline, color: Colors.brown[600],)),
+        backgroundColor: Colors.pink[100],
       ),
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text('$counter', style: TextStyle(fontSize: 100, fontFamily: 'Verdana', fontWeight: FontWeight(100)),),
-            Text('Calculadora', style: TextStyle(fontSize: 20, fontFamily: 'Verdana'))
+            Container(
+                height: 300.0,
+                color: Colors.pink[50],
+                alignment: Alignment.bottomRight,
+                padding: const EdgeInsets.all(24.0),
+                child: const Text(
+                  '0',
+                  style: TextStyle(fontSize: 48.0, color: Colors.brown, fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              Expanded(child: 
+                Container(
+                  color: Colors.pink[100],
+                  child: Column(
+                    children: [
+                        Row(
+                          children: [
+                            _buildButton('C'),
+                            _buildButton(''),
+                            _buildButton('CC'),
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            _buildButton('1'),
+                            _buildButton('2'),
+                            _buildButton('3'),
+                            _buildButton('÷'),
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            _buildButton('4'),
+                            _buildButton('5'),
+                            _buildButton('6'),
+                            _buildButton('×'),
+                          ],
+                        ),
+                      Row(
+                        children: [
+                          _buildButton('7'),
+                          _buildButton('8'),
+                          _buildButton('9'),
+                          _buildButton('-'),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          _buildButton('.'),
+                          _buildButton('0'),
+                          _buildButton('='),
+                          _buildButton('+'),
+                        ],
+                      )
+                    ],
+                  )
+                )
+              )
           ],
         ),
-      ) ,
-        floatingActionButton: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            FloatingActionButton(onPressed: (){
-              setState(() {
-                counter+=1;
-              });
-            },
-            child: const Text('1')),
-            const SizedBox(width: 30,),
-            FloatingActionButton(onPressed: (){
-              setState(() {
-                counter+=2;
-              });
-            },
-            child: const Text('2')),
-            const SizedBox(width: 30,),
-            FloatingActionButton(onPressed: (){
-              setState(() {
-                counter+=2;
-              });
-            },
-            child: const Text('3')),
-            const SizedBox(width: 30,),
-            FloatingActionButton(onPressed: (){
-              setState(() {
-                counter=0;
-              });
-            },
-            child: const Text('CC')),
-          ],
-        ),
+      ),
     );
   }
 }
