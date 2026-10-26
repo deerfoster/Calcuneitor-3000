@@ -6,21 +6,35 @@ class CalcuneitorLogic(){
 
 //-------------------------------------------------------------------------------//
     void onScreen(String digit){
-      if (textOnScreen == '0' || textOnScreen == null){
+      if (textOnScreen == null || textOnScreen == "0" || textOnScreen!.isEmpty){
         textOnScreen = digit;
-      } else{
-        textOnScreen = (textOnScreen ?? '') + digit;
+         return;
       }
+
+      textOnScreen = textOnScreen! + digit;
     }
     void operationBttonOnScreen(String digit){
+      if (textOnScreen == null ||  textOnScreen!.isEmpty) return;
+
+      String lastDigit = textOnScreen![textOnScreen!.length - 1];
+
+      if (lastDigit == '+' || lastDigit == '-' || lastDigit == '×' || lastDigit == '÷') {
+        textOnScreen = textOnScreen!.substring(0, textOnScreen!.length - 1) + digit;
+      } else {
+        textOnScreen = textOnScreen! + digit;
+      }
+
       operationBtton = digit;
-      textOnScreen = (textOnScreen ?? '') + digit;
     }
     void cleanerCalcu(){
       textOnScreen = '0';
       operationBtton = null;
     }
     void deleteCalcuChar(){
+      if (textOnScreen == "error" || textOnScreen == "Infinity" || textOnScreen == "NaN"){
+        textOnScreen = "0";
+        return;
+      }
       if (textOnScreen != null && textOnScreen!.isNotEmpty){
         if (textOnScreen!.length > 1){
           textOnScreen = textOnScreen!.substring(0, textOnScreen!.length -1);
@@ -36,7 +50,8 @@ class CalcuneitorLogic(){
     try{
       String finalResult = textOnScreen!
       .replaceAll('×', '*')
-      .replaceAll('÷', "/");
+      .replaceAll('÷', "/")
+      .replaceAll(',', ".");
 
       Parser p = Parser();
       Expression exp = p.parse(finalResult);

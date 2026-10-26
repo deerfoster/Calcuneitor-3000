@@ -6,10 +6,10 @@ class DeveloperInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.pink[100],
+      backgroundColor: Colors.pink[50],
       appBar: AppBar(
-        title: Text('About', style: TextStyle(color: Colors.brown[600]),),
-        backgroundColor: Colors.pink[100],
+        title: Text('About me', style: TextStyle(color: Colors.brown[600], fontWeight: FontWeight.bold)),
+        backgroundColor: Colors.pink[200]!.withValues(alpha: 0.25),
       ),
       body: Center(
         child: Column(
@@ -23,7 +23,8 @@ class DeveloperInfo extends StatelessWidget {
               ),
             ),
             CircleAvatar(
-              radius: 100.0,
+              radius: 90.0,
+              backgroundColor: Colors.pink[200]!.withValues(alpha: 0.25),
               child: Icon(Icons.person_search, size: 100.0, color: Colors.brown[600]),
             ),
             SizedBox(
@@ -33,7 +34,7 @@ class DeveloperInfo extends StatelessWidget {
               child:
                 Card(
                   margin: EdgeInsets.zero,
-                  color: Colors.brown[200],
+                  color: Colors.pink[200]!.withValues(alpha: 0.25),
                   elevation: 2,
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.horizontal()),
                   child: Padding(padding: EdgeInsets.all(20.0),
@@ -48,5 +49,4 @@ class DeveloperInfo extends StatelessWidget {
       ),
     );
   }
-
 }
