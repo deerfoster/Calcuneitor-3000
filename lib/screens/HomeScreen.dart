@@ -79,7 +79,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       appBar: AppBar(
         title:Text(
-        'Calcuneitor 3000', style: TextStyle(color: Colors.brown[600]),
+        'Calcuneitor', style: TextStyle(color: Colors.brown[600]),
         ),
         leading: IconButton(onPressed: () {  
           Navigator.pushNamed(context, '/info');
@@ -107,16 +107,16 @@ class _HomeScreenState extends State<HomeScreen> {
                         Row(
                           children: [
                             _buildButton('C'),
-                            _buildButton(''),
                             _buildButton('CC'),
+                            _buildButton('÷'),
                           ],
                         ),
                         Row(
                           children: [
-                            _buildButton('1'),
-                            _buildButton('2'),
-                            _buildButton('3'),
-                            _buildButton('÷'),
+                            _buildButton('7'),
+                            _buildButton('8'),
+                            _buildButton('9'),
+                            _buildButton('×'),
                           ],
                         ),
                         Row(
@@ -124,23 +124,23 @@ class _HomeScreenState extends State<HomeScreen> {
                             _buildButton('4'),
                             _buildButton('5'),
                             _buildButton('6'),
-                            _buildButton('×'),
+                            _buildButton('-'),
                           ],
                         ),
                       Row(
                         children: [
-                          _buildButton('7'),
-                          _buildButton('8'),
-                          _buildButton('9'),
-                          _buildButton('-'),
+                          _buildButton('1'),
+                          _buildButton('2'),
+                          _buildButton('3'),
+                          _buildButton('+'),
                         ],
                       ),
                       Row(
                         children: [
                           _buildButton('.'),
                           _buildButton('0'),
+                          _buildButton(','),
                           _buildButton('='),
-                          _buildButton('+'),
                         ],
                       )
                     ],

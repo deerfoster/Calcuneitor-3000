@@ -68,7 +68,12 @@ class CalcuneitorLogic(){
       break;
     }
 
-    textOnScreen = result.toString();
+    if (result % 1 == 0) {
+      textOnScreen = result.toInt().toString();
+    } else {
+      textOnScreen = result.toString();
+    }
+
     value1 = result;
     operationBtton = null;
   }
