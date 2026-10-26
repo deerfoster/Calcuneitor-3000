@@ -1,10 +1,7 @@
 import 'package:math_expressions/math_expressions.dart';
 
 class CalcuneitorLogic(){
-  double? value1;
-  double? value2;
   String? textOnScreen = '0';
-  double? valueOnScreen;
   String? operationBtton;
 
 //-------------------------------------------------------------------------------//
@@ -21,8 +18,6 @@ class CalcuneitorLogic(){
     }
     void cleanerCalcu(){
       textOnScreen = '0';
-      value1 = null;
-      value2 = null;
       operationBtton = null;
     }
     void deleteCalcuChar(){
