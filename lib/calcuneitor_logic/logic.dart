@@ -7,25 +7,6 @@ class CalcuneitorLogic(){
   double? valueOnScreen;
   String? operationBtton;
 
-    SumCalcu(double value1, double value2){
-    double result = value1 + value2;
-    return result;
-    }
-
-    substractCalcu(double value1, double value2){
-      double result = value1 - value2;
-      return result;
-    }
-
-    multiplicationCalcu(double value1, double value2){
-      double result = value1 * value2;
-      return result;
-    }
-
-    divisionCalcu(double value1, double value2){
-      double result = value1 / value2;
-      return result;
-    }
 //-------------------------------------------------------------------------------//
     void onScreen(String digit){
       if (textOnScreen == '0' || textOnScreen == null){
@@ -44,38 +25,38 @@ class CalcuneitorLogic(){
       value2 = null;
       operationBtton = null;
     }
+    void deleteCalcuChar(){
+      if (textOnScreen != null && textOnScreen!.isNotEmpty){
+        if (textOnScreen!.length > 1){
+          textOnScreen = textOnScreen!.substring(0, textOnScreen!.length -1);
+        } else {
+          textOnScreen = '0';
+        }
+      }
+    }
   //----------------------------------------------------------------------------//
   void mathResults(){
-    if (value1 == null || operationBtton == null) return;
+    if (textOnScreen == null || textOnScreen!.isEmpty) return;
 
-    value2 = double.tryParse(textOnScreen ?? '0');
-    if (value2 == null) return;
-    double result = 0;
+    try{
+      String finalResult = textOnScreen!
+      .replaceAll('×', '*')
+      .replaceAll('÷', "/");
 
-    switch (operationBtton){
-      case '+':
-      result = SumCalcu(value1!, value2!);
-      break;
-      case '-':
-      result = substractCalcu(value1!, value2!);
-      break;
-      case '×':
-      result = multiplicationCalcu(value1!, value2!);
-      break;
-      case '÷':
-      result = value2 != 0? divisionCalcu(value1!, value2!) : 0;
-      break;
-      default:
-      break;
-    }
+      Parser p = Parser();
+      Expression exp = p.parse(finalResult);
 
-    if (result % 1 == 0) {
-      textOnScreen = result.toInt().toString();
+      ContextModel cm = ContextModel();
+      double resultado = exp.evaluate(EvaluationType.REAL, cm);
+
+      if (resultado % 1 == 0) {
+      textOnScreen = resultado.toInt().toString();
     } else {
-      textOnScreen = result.toString();
+      textOnScreen = resultado.toString();
     }
-
-    value1 = result;
-    operationBtton = null;
+    
+    } catch (e) {
+      textOnScreen = 'error';
+    }
   }
 }
