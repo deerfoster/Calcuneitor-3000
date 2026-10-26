@@ -6,12 +6,14 @@ Calcuneitor 3000 is an App made simply for the people who wants to do basic math
 
 ## Technologies
 
-### Languages & Frameworks
+### Lenguajes y Frameworks
 * **Flutter:** v3.47.7 (Framework)
 * **Dart:** v3.13.4 (programming language)
 
-### Enviroments
-* **IDE:** Visual Studio Code v1.143 (w/ official flutter & dart extensions)
+### Entorno de Desarrollo
+* **IDE:** Visual Studio Code v1.143.1 (w/ official flutter & dart extensions)
+
+
 
 ## Installation
 
@@ -38,6 +40,12 @@ After those steps, you can run the vscode (include IDE's you prefer/known) termi
 It will show the app on screen for you to use.
 
 In there you can press numbers and use the sum, substraction, multiplication and division operationals and the app will show what you need to know.
+## API Reference & Core Logic
+
+### External Dependencies
+* math_expressions: Used to simplify operations with more than two values & math operators. Even recognizes 1/0 operations (a function that tends to infinity in limits when the denominator tends to zero).
+
+
 ## Authors
 
 - [@DeerFoster](https://www.github.com/DeerFoster) Developer/Designer/Tester/Father&MotherOfTheApp.
@@ -46,10 +54,8 @@ In there you can press numbers and use the sum, substraction, multiplication and
 ## License
 
 Any user can use this app as their heart wishes. 
-
-Only by the exception that me @DeerFoster (Developer/Designer/Tester/Father&MotherOfTheApp) assumes no responsibility or liability for any illegal use of this application (include bugs & crashes).
 ## Acknowledgements
 
  - [Readme.so](https://readme.so/)
  - [Flutter Awesome](https://flutterawesome.com/)
- - [Informaticonfig yt channel](https://www.youtube.com/@informaticonfig333)
+ - [Informaticonfig yt channel](https://www.youtube.com/@informaticonfig333).
