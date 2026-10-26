@@ -18,39 +18,39 @@ class _HomeScreenState extends State<HomeScreen> {
   void _onBttonPressed(String value){
     setState(() {
       switch (value) {
-      case '0': 
-      case '1':
-      case '2':
-      case '3':
-      case '4':
-      case '5':
-      case '6':
-      case '7':
-      case '8':
-      case '9':
-      case '.':
-      _calcuLogic.onScreen(value);
-        break;
-        
-      case '+':
-      case '-':
-      case '×':
-      case '÷':
-      _calcuLogic.operationBttonOnScreen(value);
-        break;
-        
-      case 'C':
-      _calcuLogic.cleanerCalcu();
-        break;
-        
-      case '=':
-      _calcuLogic.mathResults();
-        break;
-        
-      default:
-        break;
-    }
-    });
+        case '0': 
+        case '1':
+        case '2':
+        case '3':
+        case '4':
+        case '5':
+        case '6':
+        case '7':
+        case '8':
+        case '9':
+        case '.':
+        case ',':
+        _calcuLogic.onScreen(value);
+          break; 
+        case '+':
+        case '-':
+        case '×':
+        case '÷':
+        _calcuLogic.operationBttonOnScreen(value);
+          break;
+        case 'C':
+        _calcuLogic.cleanerCalcu();
+          break;
+        case 'CC':
+        _calcuLogic.deleteCalcuChar();
+          break;
+        case '=':
+        _calcuLogic.mathResults();
+          break; 
+        default:
+          break;
+      }}
+    );
   }
 
 //---------------------------------------------------------------------------------------//
@@ -61,7 +61,7 @@ class _HomeScreenState extends State<HomeScreen> {
         padding: const EdgeInsets.all(10.0),
         child: 
           ElevatedButton(style: ElevatedButton.styleFrom(
-            backgroundColor: Colors.pink[50],
+            backgroundColor: Colors.pink[50]!,
             minimumSize: Size(95, 65)
           ),
             onPressed: (){
@@ -79,7 +79,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       appBar: AppBar(
         title:Text(
-        'Calcuneitor', style: TextStyle(color: Colors.brown[600]),
+        'Calcuneitor', style: TextStyle(color: Colors.brown[600], fontWeight: FontWeight.bold),
         ),
         leading: IconButton(onPressed: () {  
           Navigator.pushNamed(context, '/info');
@@ -91,11 +91,25 @@ class _HomeScreenState extends State<HomeScreen> {
           children: [
             Container(
                 height: 300.0,
-                color: Colors.pink[50],
                 alignment: Alignment.bottomRight,
                 padding: const EdgeInsets.all(24.0),
+                decoration: BoxDecoration(
+                  color: Colors.pink[50]!.withValues(alpha: 0.8),
+                  borderRadius: BorderRadius.horizontal(),
+                  border: Border.all(
+                    color: Colors.pink[200]!.withValues(alpha: 0.25),
+                    width: 2.0
+                  ),
+                  boxShadow: [ BoxShadow(
+                    color: Colors.pink[200]!.withValues(alpha: 0.25),
+                    offset: const Offset(0, 4),
+                    blurRadius: 15.0,
+                    spreadRadius: 2.0, 
+                  ),
+                ],
+                ),
                 child: Text(_calcuLogic.textOnScreen ?? '0',
-                  style: TextStyle(fontSize: 48.0, color: Colors.brown, fontWeight: FontWeight.bold,
+                  style: TextStyle(fontSize: 48.0, color: Colors.brown, fontWeight: FontWeight.normal,
                   ),
                 ),
               ),

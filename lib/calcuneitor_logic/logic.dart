@@ -1,80 +1,72 @@
+import 'package:math_expressions/math_expressions.dart';
+
 class CalcuneitorLogic(){
-  double? value1;
-  double? value2;
   String? textOnScreen = '0';
-  double? valueOnScreen;
   String? operationBtton;
 
-    SumCalcu(double value1, double value2){
-    double result = value1 + value2;
-    return result;
-    }
-
-    substractCalcu(double value1, double value2){
-      double result = value1 - value2;
-      return result;
-    }
-
-    multiplicationCalcu(double value1, double value2){
-      double result = value1 * value2;
-      return result;
-    }
-
-    divisionCalcu(double value1, double value2){
-      double result = value1 / value2;
-      return result;
-    }
 //-------------------------------------------------------------------------------//
     void onScreen(String digit){
-      if (textOnScreen == '0' || textOnScreen == null){
+      if (textOnScreen == null || textOnScreen == "0" || textOnScreen!.isEmpty){
         textOnScreen = digit;
-      } else{
-        textOnScreen = (textOnScreen ?? '') + digit;
+         return;
       }
+
+      textOnScreen = textOnScreen! + digit;
     }
     void operationBttonOnScreen(String digit){
-      value1 = double.tryParse(textOnScreen ?? '0');
+      if (textOnScreen == null ||  textOnScreen!.isEmpty) return;
+
+      String lastDigit = textOnScreen![textOnScreen!.length - 1];
+
+      if (lastDigit == '+' || lastDigit == '-' || lastDigit == '×' || lastDigit == '÷') {
+        textOnScreen = textOnScreen!.substring(0, textOnScreen!.length - 1) + digit;
+      } else {
+        textOnScreen = textOnScreen! + digit;
+      }
+
       operationBtton = digit;
-      textOnScreen = '0';
     }
     void cleanerCalcu(){
       textOnScreen = '0';
-      value1 = null;
-      value2 = null;
       operationBtton = null;
+    }
+    void deleteCalcuChar(){
+      if (textOnScreen == "error" || textOnScreen == "Infinity" || textOnScreen == "NaN"){
+        textOnScreen = "0";
+        return;
+      }
+      if (textOnScreen != null && textOnScreen!.isNotEmpty){
+        if (textOnScreen!.length > 1){
+          textOnScreen = textOnScreen!.substring(0, textOnScreen!.length -1);
+        } else {
+          textOnScreen = '0';
+        }
+      }
     }
   //----------------------------------------------------------------------------//
   void mathResults(){
-    if (value1 == null || operationBtton == null) return;
+    if (textOnScreen == null || textOnScreen!.isEmpty) return;
 
-    value2 = double.tryParse(textOnScreen ?? '0');
-    if (value2 == null) return;
-    double result = 0;
+    try{
+      String finalResult = textOnScreen!
+      .replaceAll('×', '*')
+      .replaceAll('÷', "/")
+      .replaceAll(',', ".");
 
-    switch (operationBtton){
-      case '+':
-      result = SumCalcu(value1!, value2!);
-      break;
-      case '-':
-      result = substractCalcu(value1!, value2!);
-      break;
-      case '×':
-      result = multiplicationCalcu(value1!, value2!);
-      break;
-      case '÷':
-      result = value2 != 0? divisionCalcu(value1!, value2!) : 0;
-      break;
-      default:
-      break;
-    }
+      Parser p = Parser();
+      Expression exp = p.parse(finalResult);
 
-    if (result % 1 == 0) {
-      textOnScreen = result.toInt().toString();
+      ContextModel cm = ContextModel();
+      double resultado = exp.evaluate(EvaluationType.REAL, cm);
+
+      if (resultado % 1 == 0) {
+      textOnScreen = resultado.toInt().toString();
     } else {
-      textOnScreen = result.toString();
+      textOnScreen = resultado.toString();
     }
-
-    value1 = result;
-    operationBtton = null;
+    
+    } catch (e) {
+      textOnScreen = 'error';
+    }
   }
 }

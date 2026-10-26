@@ -6,32 +6,47 @@ class DeveloperInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.pink[100],
+      backgroundColor: Colors.pink[50],
       appBar: AppBar(
-        title: Text('About', style: TextStyle(color: Colors.brown[600]),),
-        backgroundColor: Colors.pink[100],
+        title: Text('About me', style: TextStyle(color: Colors.brown[600], fontWeight: FontWeight.bold)),
+        backgroundColor: Colors.pink[200]!.withValues(alpha: 0.25),
       ),
       body: Center(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Padding(padding: EdgeInsets.all(48.0)),
+            Padding(padding: EdgeInsets.all(48.0),
+              child: Column(
+                children: [
+
+                ],
+              ),
+            ),
             CircleAvatar(
-              radius: 100.0,
+              radius: 90.0,
+              backgroundColor: Colors.pink[200]!.withValues(alpha: 0.25),
               child: Icon(Icons.person_search, size: 100.0, color: Colors.brown[600]),
             ),
             SizedBox(
-              height: 16,
+              height: 50,
             ),
-            Card(
-              color: Colors.brown[200],
-              elevation: 2,
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-              child: Padding(padding: EdgeInsets.all(30.0)),
+            Container( width: double.infinity,
+              child:
+                Card(
+                  margin: EdgeInsets.zero,
+                  color: Colors.pink[200]!.withValues(alpha: 0.25),
+                  elevation: 2,
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.horizontal()),
+                  child: Padding(padding: EdgeInsets.all(20.0),
+                    child: Column(
+
+                  ),
+                ),
+              )
             )
           ],
         ),
       ),
     );
   }
-
 }
