@@ -1,3 +1,5 @@
+import 'package:math_expressions/math_expressions.dart';
+
 class CalcuneitorLogic(){
   double? value1;
   double? value2;
@@ -33,9 +35,8 @@ class CalcuneitorLogic(){
       }
     }
     void operationBttonOnScreen(String digit){
-      value1 = double.tryParse(textOnScreen ?? '0');
       operationBtton = digit;
-      textOnScreen = '0';
+      textOnScreen = (textOnScreen ?? '') + digit;
     }
     void cleanerCalcu(){
       textOnScreen = '0';

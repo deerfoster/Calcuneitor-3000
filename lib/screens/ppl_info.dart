@@ -13,20 +13,35 @@ class DeveloperInfo extends StatelessWidget {
       ),
       body: Center(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Padding(padding: EdgeInsets.all(48.0)),
+            Padding(padding: EdgeInsets.all(48.0),
+              child: Column(
+                children: [
+
+                ],
+              ),
+            ),
             CircleAvatar(
               radius: 100.0,
               child: Icon(Icons.person_search, size: 100.0, color: Colors.brown[600]),
             ),
             SizedBox(
-              height: 16,
+              height: 50,
             ),
-            Card(
-              color: Colors.brown[200],
-              elevation: 2,
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-              child: Padding(padding: EdgeInsets.all(30.0)),
+            Container( width: double.infinity,
+              child:
+                Card(
+                  margin: EdgeInsets.zero,
+                  color: Colors.brown[200],
+                  elevation: 2,
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.horizontal()),
+                  child: Padding(padding: EdgeInsets.all(20.0),
+                    child: Column(
+
+                  ),
+                ),
+              )
             )
           ],
         ),
