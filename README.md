@@ -58,4 +58,4 @@ Any user can use this app as their heart wishes.
 
  - [Readme.so](https://readme.so/)
  - [Flutter Awesome](https://flutterawesome.com/)
- - [Informaticonfig yt channel](https://www.youtube.com/@informaticonfig333)
+ - [Informaticonfig yt channel](https://www.youtube.com/@informaticonfig333).
