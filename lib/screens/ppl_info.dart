@@ -60,7 +60,7 @@ class DeveloperInfo extends StatelessWidget {
                         ),
                         const SizedBox(height: 20.0),
                         Text(
-                          'This app was made with C#, Java, Dart & Flutter.',
+                          'This app was made with Dart & Flutter.',
                           style: TextStyle(
                             fontSize: 13.0,
                             fontStyle: FontStyle.italic,
